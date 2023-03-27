@@ -1,0 +1,16 @@
+# project.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: $(PROJECT_NAME)
+  namespace: projectname-argocd
+spec:
+  description: $(PROJECT_DESCRIPTION)
+  sourceRepos:
+  - $(GIT_REPO)
+  destinations:
+  - namespace: $(NAMESPACE)
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'

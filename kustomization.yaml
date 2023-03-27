@@ -1,0 +1,21 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: $(NAMESPACE)
+
+namePrefix: $(APP_NAME)-
+
+resources:
+- ingress.yaml
+- service.yaml
+- secret.yaml
+- deployment.yaml
+
+vars:
+- name: NAMESPACE
+  value: projectname-dev
+- name: APP_NAME
+  value: my-app
+- name: DOMAIN
+  value: my-app.example.com
